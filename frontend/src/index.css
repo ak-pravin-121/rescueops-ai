@@ -1,0 +1,82 @@
+@import "tailwindcss";
+
+@theme {
+  /* --- Mission control palette --- */
+  --color-void: #0B0E14;
+  --color-panel: #131722;
+  --color-panel-raised: #1A1F2C;
+  --color-border: #232938;
+  --color-ink: #E6E9F0;
+  --color-ink-muted: #8B93A6;
+
+  --color-brand: #2DD4BF;
+  --color-brand-dark: #14B8A6;
+
+  --color-critical: #F43F5E;
+  --color-high: #FB923C;
+  --color-medium: #FBBF24;
+  --color-low: #60A5FA;
+  --color-success: #34D399;
+
+  /* --- Type --- */
+  --font-display: "Space Grotesk", "Arial", sans-serif;
+  --font-body: "Inter", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--color-void);
+  color: var(--color-ink);
+  font-family: var(--font-body);
+  background-image:
+    radial-gradient(circle at 1px 1px, rgba(255,255,255,0.035) 1px, transparent 0);
+  background-size: 22px 22px;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-void);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-border);
+  border-radius: 6px;
+}
+
+/* Live pulse dot used next to "LIVE" / real-time indicators */
+.pulse-dot {
+  position: relative;
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 9999px;
+  background: var(--color-success);
+}
+.pulse-dot::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 9999px;
+  background: var(--color-success);
+  animation: pulse-ring 1.8s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes pulse-ring {
+  0% { transform: scale(1); opacity: 0.7; }
+  100% { transform: scale(2.6); opacity: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
