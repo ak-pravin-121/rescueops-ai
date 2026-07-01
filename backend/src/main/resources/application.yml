@@ -6,10 +6,10 @@ spring:
   application:
     name: rescueops-ai-backend
 
-  datasource:
-    url: jdbc:postgresql://${DB_HOST:localhost}:${DB_PORT:5432}/${DB_NAME:rescueops}
-    username: ${DB_USERNAME:postgres}
-    password: ${DB_PASSWORD:password}
+datasource:
+    url: jdbc:postgresql://dpg-d929aktckfvc-a.oregon-postgres.render.com:5432/rescueops
+    username: rescueops
+    password: 5Ga5di5EWQRPvcB1Be6PQT8qNqPb2jEE
     driver-class-name: org.postgresql.Driver
     hikari:
       maximum-pool-size: ${DB_POOL_SIZE:5}
