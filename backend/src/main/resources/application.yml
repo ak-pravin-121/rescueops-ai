@@ -7,7 +7,7 @@ spring:
     name: rescueops-ai-backend
 
   datasource:
-    url: jdbc:postgresql://dpg-d929aktckfvc-a.oregon-postgres.render.com:5432/rescueops
+    url: url: jdbc:postgresql://dpg-d929aktckfvc-a.oregon-postgres.render.com:5432/rescueops?sslmode=require
     username: rescueops
     password: 5Ga5di5EWQRPvcB1Be6PQT8qNqPb2jEE
     driver-class-name: org.postgresql.Driver
