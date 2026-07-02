@@ -1,18 +1,18 @@
 server:
   port: ${PORT:8080}
-  forward-headers-strategy: framework
 
 spring:
   application:
     name: rescueops-ai-backend
 
   datasource:
-    url: url: jdbc:postgresql://dpg-d929aktckfvc-a.oregon-postgres.render.com:5432/rescueops?sslmode=require
+    url: jdbc:postgresql://dpg-d929aktckfvc-a.oregon-postgres.render.com:5432/rescueops?sslmode=require&sslrootcert=system
     username: rescueops
     password: 5Ga5di5EWQRPvcB1Be6PQT8qNqPb2jEE
     driver-class-name: org.postgresql.Driver
     hikari:
       maximum-pool-size: 3
+      connection-timeout: 30000
 
   jpa:
     hibernate:
@@ -21,6 +21,9 @@ spring:
     properties:
       hibernate:
         dialect: org.hibernate.dialect.PostgreSQLDialect
+        jdbc:
+          lob:
+            non_contextual_creation: true
     open-in-view: false
 
   jackson:
@@ -28,10 +31,10 @@ spring:
 
 app:
   jwt:
-    secret: ${JWT_SECRET:RescueOpsSecretKey2026SuperSecureJWTToken}
+    secret: RescueOpsSecretKey2026SuperSecureJWTToken
     expiration-ms: 604800000
   cors:
-    allowed-origins: ${CORS_ALLOWED_ORIGINS:https://rescueops-ai.onrender.com}
+    allowed-origins: https://rescueops-ai.onrender.com
 
 gemini:
   api-key: ${GEMINI_API_KEY:}
@@ -51,4 +54,4 @@ management:
 logging:
   level:
     root: INFO
-    com.rescueops: DEBUG
+    com.rescueops: INFO
